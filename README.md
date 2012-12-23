@@ -21,7 +21,7 @@ Description
 
 开机启动通过修改`$HOME/.profile`实现; remote主动连接control。
 
-开机加载内核模块请手工修改`/etc/rc.local`文件，添加：`/sbin/insmod $HOME/REMOTE/rt.ko`
+开机加载内核模块请手工修改`/etc/rc.local`文件，添加：`/sbin/insmod /etc/REMOTE/rt.ko`
 
 License
 -------
