@@ -129,7 +129,13 @@ int main(int argc, char const *argv[]) {
         if (strcmp(command, "cd") == 0) {
             sscanf(datagram, "%*3s%s", path);
             if (chdir(path) == -1) {
-                printf("Chdir: %s\n", strerror(errno));
+                bzero(datagram, sizeof(datagram));
+                sprintf(datagram, "%s\n", strerror(errno));
+                x = sendto(sockfd, datagram, sizeof(datagram), 0, (struct sockaddr *)&control_add, sizeof(struct sockaddr_in));
+                x = sendto(sockfd, eof, 10, 0, (struct sockaddr *)&control_add, sizeof(control_add));
+                if (x == -1)
+                    printError(2, strerror(errno));
+                continue;
             }else
                 fp = popen("pwd", "r");
             bzero(path, sizeof(path));
